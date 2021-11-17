@@ -13,8 +13,8 @@ browser.webRequest.onBeforeRequest.addListener(
 			return { redirectUrl: "https://piped.kavin.rocks/watch?v=" + url.pathname.substr(1) };
 		}
 		if (
-			url.hostname.endsWith("youtube.com") ||
-			url.hostname.endsWith("youtube-nocookie.com") ||
+			url.hostname.endsWith("youtube.com") && !(url.hostname.includes("music.")) ||
+			url.hostname.endsWith("youtube-nocookie.com") && !(url.hostname.includes("music.")) ||
 			INVIDIOUS_INSTANCES.includes(url.hostname)
 		) {
 			url.hostname = "piped.kavin.rocks";
